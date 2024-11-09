@@ -17,9 +17,35 @@
 </head>
 <body>
 
-<h1>Hello, world!</h1>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-
+    <section>
+        <table width="80%">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Status</td>
+                    <td>Status</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="people">
+                        <img src="" alt="">
+                        <div class="people-de">
+                            <h5>Deadpool</h5>
+                            <p>hfiubiurwiuwiufr</p>
+                        </div>
+                    </td>
+                    <td class="people-des">
+                        <h5>Software Engineer</h5>
+                        <p></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <h1>Hello, world!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>
