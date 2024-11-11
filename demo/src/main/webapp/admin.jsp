@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,25 +36,34 @@
 <!-- navbar -->
 
 
-<!-- cards -->
+
 <div id="card-area">
-    <div class="buttonsection">
-        <!-- add movie button modal -->
+    <!-- add movie button -->
+    <div class="buttonSection">
         <a href="#" class="addbtn"><button class="btn1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">ADD MOVIE</button></a>
     </div>
-    <!-- Modal -->
+    <!-- Add Button Modal -->
     <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content" style="background-color: rgb(2, 131, 55);">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Movie</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <!-- input section -->
-                <div id='section2' class="p-8 mt-6 lg:mt-0 rounded shadow" style="background-color: rgb(1, 95, 67); color: rgb(185, 205, 223);">
+                <div id='modal-body' class="p-8 mt-6 lg:mt-0 rounded shadow">
 
                     <form name="addForm" action="" method="post" onsubmit="return validateForm()">
+
+                        <div class="md:flex mb-6">
+                            <div class="md:w-1/3">
+                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Movie Id</label>
+                            </div>
+                            <div class="md:w-2/3">
+                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="number" value="" name="movieId">
+                            </div>
+                        </div>
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
@@ -66,7 +76,7 @@
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
-                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">Ticket Price</label>
+                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Ticket Price</label>
                             </div>
                             <div class="md:w-2/3">
                                 <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="price">
@@ -95,15 +105,16 @@
                             <button type="submit" class="btn btn-primary">Add Movie</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
-
                     </form>
                 </div>
                 <!--/input section-->
-
             </div>
         </div>
     </div>
-    <!-- /Modal -->
+    <!-- /Add button modal -->
+
+
+
 
     <!-- movie cards -->
     <div class="wrapper">
@@ -114,98 +125,14 @@
                 <div class="overlay">
                     <h3>Deadpool & Wolverine</h3>
 
+                    <!-- edit button -->
                     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
                         <a href="#">Edit</a>
                     </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content" style="background-color: rgb(2, 131, 55);">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Movie</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-
-                                <!-- input section -->
-                                <div id='section2' class="p-8 mt-6 lg:mt-0 rounded shadow" style="background-color: rgb(1, 95, 67); color: rgb(185, 205, 223);">
-
-                                    <form name="addForm" action="" method="post" onsubmit="return validateForm()">
-
-                                        <div class="md:flex mb-6">
-                                            <div class="md:w-1/3">
-                                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Movie Name</label>
-                                            </div>
-                                            <div class="md:w-2/3">
-                                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="movieName">
-                                            </div>
-                                        </div>
-
-                                        <div class="md:flex mb-6">
-                                            <div class="md:w-1/3">
-                                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">Ticket Price</label>
-                                            </div>
-                                            <div class="md:w-2/3">
-                                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="price">
-                                            </div>
-                                        </div>
-
-                                        <div class="md:flex mb-6">
-                                            <div class="md:w-1/3">
-                                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">Movie Description</label>
-                                            </div>
-                                            <div class="md:w-2/3">
-                                                <textarea class="form-textarea block w-full focus:bg-white" id="my-textarea" value="" rows="5" name="txtarea"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="md:flex mb-6">
-                                            <div class="md:w-1/3">
-                                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Image for the Card</label>
-                                            </div>
-                                            <div class="md:w-2/3">
-                                                <input id="filebutton" name="filebutton" class="input-file" type="file">
-                                            </div>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">Add Movie</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        </div>
-
-                                    </form>
-                                </div>
-                                <!--/input section-->
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Modal -->
-
                     <!-- delete button -->
                     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
                         <a href="#">Delete</a>
                     </button>
-
-                    <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Warning </h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <i class="fa-solid fa-circle-exclamation fa-lg"></i>
-                                    <p>Are you sure you want to delete this movie?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -213,54 +140,171 @@
                 <img alt="" src="images/wild-robot.jpg">
                 <div class="overlay">
                     <h3>The Wild Robot</h3>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                        <a href="#">Edit</a>
+                    </button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                        <a href="#">Delete</a>
+                    </button>
+
                 </div>
             </div>
             <div class="box">
                 <img alt="" src="images/It-ends-with-us-latest-edition-3.jpg">
                 <div class="overlay">
                     <h3>It ends with Us</h3>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                        <a href="#">Edit</a>
+                    </button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                        <a href="#">Delete</a>
+                    </button>
+
                 </div>
             </div>
             <div class="box">
                 <img alt="" src="images/transformers.jpg">
                 <div class="overlay">
                     <h3>Transformers One</h3>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                        <a href="#">Edit</a>
+                    </button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                        <a href="#">Delete</a>
+                    </button>
+
                 </div>
             </div>
             <div class="box">
                 <img alt="" src="images/smile.jpg">
                 <div class="overlay">
                     <h3>Smile 2</h3>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                        <a href="#">Edit</a>
+                    </button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                        <a href="#">Delete</a>
+                    </button>
+
                 </div>
             </div>
             <div class="box">
                 <img alt="" src="images/Joker Folie à Deux.jpg ">
                 <div class="overlay">
                     <h3>Joker: Folie à Deux</h3>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                        <a href="#">Edit</a>
+                    </button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                        <a href="#">Delete</a>
+                    </button>
+
                 </div>
             </div>
             <div class="box">
                 <img alt="" src="images/venom.jpg">
                 <div class="overlay">
                     <h3>Venom: The Last Dance</h3>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                        <a href="#">Edit</a>
+                    </button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                        <a href="#">Delete</a>
+                    </button>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- /movie cards -->
+
+
+
+
+<!-- Edit button common modal -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Movie</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- input section -->
+            <div id='modal-body' class="p-8 mt-6 lg:mt-0 rounded shadow">
+                <form name="addForm" action="" method="post" onsubmit="return validateForm()">
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/3">
+                            <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Movie Name</label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="movieName">
+                        </div>
+                    </div>
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/3">
+                            <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Ticket Price</label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="price">
+                        </div>
+                    </div>
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/3">
+                            <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">Movie Description</label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <textarea class="form-textarea block w-full focus:bg-white" id="my-textarea" value="" rows="5" name="txtarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/3">
+                            <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Image for the Card</label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <input id="filebutton" name="filebutton" class="input-file" type="file">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Add Movie</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+            <!--/input section-->
+        </div>
+    </div>
+</div>
+<!-- /edit button common modal -->
+
+
+<%--Delete button common moda--%>
+<div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #c0ad05ce;">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Warning  <i class="fa-solid fa-circle-exclamation fa-lg"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color: #da8787b2;">
+                <p>Are you sure you want to delete this movie?</p>
+            </div>
+            <div class="modal-footer" style="background-color: #da8787b2;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Delete button common modal -->
+
 
 <!-- script to validate empty inputs in add movie modal -->
 <script>
