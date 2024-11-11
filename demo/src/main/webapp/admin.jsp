@@ -54,7 +54,7 @@
                 <!-- input section -->
                 <div id='modal-body' class="p-8 mt-6 lg:mt-0 rounded shadow">
 
-                    <form name="addForm" action="" method="post" onsubmit="return validateForm()">
+                    <form name="addForm" action="addMovieServlet" method="post" onsubmit="return validateForm()">
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
@@ -76,7 +76,7 @@
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
-                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Ticket Price</label>
+                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Ticket Price($)</label>
                             </div>
                             <div class="md:w-2/3">
                                 <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="price">
