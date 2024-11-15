@@ -3,48 +3,49 @@ package org.example.demo.dto;
 import java.sql.Blob;
 
 public class movies {
-    int mid;
-    String mname;
-    int price;
-    String desc;
-    Blob image;
+    int mId;
+    String mName;
+    int Price;
+    String Desc;
+    Blob Image;
 
-    public int getMid() {
-        return mid;
-    }
-    public void setMid(int mid) {
-        this.mid = mid;
+    public int getmId() {
+        return mId;
     }
 
-
-    public String getMname() {
-        return mname;
-    }
-    public void setMname(String mname) {
-        this.mname = mname;
+    public void setmId(int mId) {
+        this.mId = mId;
     }
 
+    public String getmName() {
+        return mName;
+    }
+
+    public void setmName(String mName) {
+        this.mName = mName;
+    }
 
     public int getPrice() {
-        return price;
-    }
-    public void setPrice(int price) {
-        this.price = price;
+        return Price;
     }
 
+    public void setPrice(int price) {
+        Price = price;
+    }
 
     public String getDesc() {
-        return desc;
-    }
-    public void setDesc(String desc) {
-        this.desc = desc;
+        return Desc;
     }
 
-    
-    public Blob getImage() {
-        return image;
+    public void setDesc(String desc) {
+        Desc = desc;
     }
+
+    public Blob getImage() {
+        return Image;
+    }
+
     public void setImage(Blob image) {
-        this.image = image;
+        Image = image;
     }
 }

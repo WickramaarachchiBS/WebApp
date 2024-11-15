@@ -28,7 +28,7 @@
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
     <!-- css -->
-    <link rel="stylesheet" href="CSS/admin.css">
+    <link rel="stylesheet" href="css/admin.css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
 
 
 
-<div id="card-area">
+<div class="cardArea">
     <!-- add movie button -->
     <div class="buttonSection">
         <a href="#" class="addbtn"><button class="btn1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">ADD MOVIE</button></a>
@@ -54,7 +54,7 @@
                 <!-- input section -->
                 <div id='modal-body' class="p-8 mt-6 lg:mt-0 rounded shadow">
 
-                    <form name="addForm" action="addMovieServlet" method="post" onsubmit="return validateForm()">
+                    <form name="addForm" action="addMovieServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
@@ -79,7 +79,7 @@
                                 <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Ticket Price($)</label>
                             </div>
                             <div class="md:w-2/3">
-                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="price">
+                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="mPrice">
                             </div>
                         </div>
 
@@ -88,7 +88,7 @@
                                 <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">Movie Description</label>
                             </div>
                             <div class="md:w-2/3">
-                                <textarea class="form-textarea block w-full focus:bg-white" id="my-textarea" value="" rows="5" name="txtarea"></textarea>
+                                <textarea class="form-textarea block w-full focus:bg-white" id="my-textarea" value="" rows="5" name="mDesc"></textarea>
                             </div>
                         </div>
 
@@ -97,7 +97,7 @@
                                 <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Image for the Card</label>
                             </div>
                             <div class="md:w-2/3">
-                                <input id="filebutton" name="filebutton" class="input-file" type="file">
+                                <input id="filebutton" name="mImage" class="input-file" type="file" accept=".jpg,.jpeg,.png,.gif">
                             </div>
                         </div>
 

@@ -9,12 +9,11 @@ body{
 }
 
 /* cards css */
-.wrapper{
-  padding: 10px 10%;
-}
-#card-area{
+
+.cardArea{
   padding: 50px 0;
-  background-color: #202020;
+  /* background-color: #1d2b22; */
+  background-image: linear-gradient(to bottom right, #1d2b22, rgb(26, 26, 1));
 }
 .buttonSection{
   display: flex;
@@ -25,6 +24,8 @@ body{
   transition: 0.3s;
   border: none;
 }
+
+/* add movie button css  */
 .btn1{
   font-size: 16px;
   margin-top: 10px;
@@ -37,11 +38,22 @@ body{
   border-color: #f1dc16;
 }
 .btn1{
-  transition: 0.3s;
+  transition: 0.5s;
+  font-weight: 600;
 }
 .btn1:hover{
-  background-color: #93b6f7;
-  color: #7c7c7c;
+  background-color: #f1dc16;
+  color: #000000;
+  scale: 1.2;
+  font-weight: 600;
+}
+.btn1:active{
+  background-color: #eecbcb;
+}
+
+/* modal css */
+.wrapper{
+  padding: 10px 10%;
 }
 .modal-content{
   background-color: transparent;
@@ -54,6 +66,8 @@ body{
   background-color: rgba(0, 0, 0, 0.74);;
   color: #9ac2da;
 }
+
+/* movie cards css */
 .box-area{
   display: grid;
   align-content: center;
@@ -104,6 +118,10 @@ body{
 }
 .btn {
   border: none;
+  transition: 0.5s;
+}
+.btn:hover {
+  scale: 1.2;
 }
 .overlay a {
   margin-top: 10px;
@@ -118,6 +136,7 @@ body{
 }
 .overlay a:hover{
   background-color: #aea1e9;
+  scale: 1.2;
 }
 .overlay a:active{
   border: none;

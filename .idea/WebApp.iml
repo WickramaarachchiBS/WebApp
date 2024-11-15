@@ -5,5 +5,9 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="javax.servlet.jstl" level="project" />
+    <orderEntry type="library" name="javax.servlet.jstl1" level="project" />
+    <orderEntry type="library" name="jakarta.servlet.jsp.jstl.api" level="project" />
+    <orderEntry type="library" name="mysql.connector.java" level="project" />
   </component>
 </module>
