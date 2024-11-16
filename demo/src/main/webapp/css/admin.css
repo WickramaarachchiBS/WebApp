@@ -59,12 +59,18 @@ body{
   background-color: transparent;
 }
 .modal-header{
+  padding-top: 1%;
+  padding-bottom: 1%;
   background-color: #c0ad05ce;;
   color: #ffffff;
 }
+.form1{
+  padding-bottom: 1%;
+}
 #modal-body{
   background-color: rgba(0, 0, 0, 0.74);;
-  color: #9ac2da;
+  color: #814343;
+  padding-bottom: 0%;
 }
 
 /* movie cards css */

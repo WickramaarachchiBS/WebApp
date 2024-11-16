@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
-    <title>Home</title>
+    <title>AdminPortal</title>
 
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -54,14 +54,14 @@
                 <!-- input section -->
                 <div id='modal-body' class="p-8 mt-6 lg:mt-0 rounded shadow">
 
-                    <form name="addForm" action="addMovieServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+                    <form class="form1" name="addForm" action="addMovieServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
                                 <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Movie Id</label>
                             </div>
                             <div class="md:w-2/3">
-                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="number" value="" name="movieId">
+                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="number" value="" name="movieId" required>
                             </div>
                         </div>
 
@@ -79,7 +79,7 @@
                                 <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Ticket Price($)</label>
                             </div>
                             <div class="md:w-2/3">
-                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="mPrice">
+                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="number" value="" name="mPrice">
                             </div>
                         </div>
 
@@ -97,13 +97,13 @@
                                 <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Image for the Card</label>
                             </div>
                             <div class="md:w-2/3">
-                                <input id="filebutton" name="mImage" class="input-file" type="file" accept=".jpg,.jpeg,.png,.gif">
+                                <input id="filebutton" name="cardImage" class="inputfile" type="file">
                             </div>
                         </div>
 
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add Movie</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn1 btn-primary" style="scale: 1; padding: 6px;">Add Movie</button>
+                            <button type="button" class="btn1 btn-secondary" data-bs-dismiss="modal" style="scale: 1; padding: 6px;">Close</button>
                         </div>
                     </form>
                 </div>
@@ -269,7 +269,7 @@
                             <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Image for the Card</label>
                         </div>
                         <div class="md:w-2/3">
-                            <input id="filebutton" name="filebutton" class="input-file" type="file">
+                            <input id="filebutton" name="cardImage" class="input-file" type="file">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -285,7 +285,7 @@
 <!-- /edit button common modal -->
 
 
-<%--Delete button common moda--%>
+<!-- Delete button common modal -->
 <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

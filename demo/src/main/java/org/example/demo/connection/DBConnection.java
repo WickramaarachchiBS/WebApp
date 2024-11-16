@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class DBConnection {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
+
         //database credentials
         String url = "jdbc:mysql://localhost:3306/test1";
         String username = "root";
@@ -13,11 +14,12 @@ public class DBConnection {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
+
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }
         //This line loads the MySQL JDBC driver class
-//        Class.forName("com.mysql.jdbc.Driver");
+        //Class.forName("com.mysql.jdbc.Driver");
 
         //connect to db
         return DriverManager.getConnection(url, username, password);
