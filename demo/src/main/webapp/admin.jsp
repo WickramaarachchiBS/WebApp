@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: USER
@@ -55,50 +54,50 @@
                 <!-- input section -->
                 <div id='modal-body' class="p-8 mt-6 lg:mt-0 rounded shadow">
 
-                    <form class="form1" name="addForm" action="addMovieServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+                    <form class="form1" name="addForm" action="AddMovieServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
-                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Movie Id</label>
+                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="movieId">Movie Id</label>
                             </div>
                             <div class="md:w-2/3">
-                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="number" value="" name="movieId" required>
+                                <input class="form-input block w-full focus:bg-white" id="movieId" type="number" name="id" required>
                             </div>
                         </div>
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
-                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Movie Name</label>
+                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="movieName">Movie Name</label>
                             </div>
                             <div class="md:w-2/3">
-                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" name="movieName">
+                                <input class="form-input block w-full focus:bg-white" id="movieName" type="text" name="movieName" required>
                             </div>
                         </div>
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
-                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Ticket Price($)</label>
+                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="moviePrice">Ticket Price($)</label>
                             </div>
                             <div class="md:w-2/3">
-                                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="number" value="" name="mPrice">
+                                <input class="form-input block w-full focus:bg-white" id=moviePrice type="number" name="moviePrice" required>
                             </div>
                         </div>
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
-                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">Movie Description</label>
+                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="movieDesc">Movie Description</label>
                             </div>
                             <div class="md:w-2/3">
-                                <textarea class="form-textarea block w-full focus:bg-white" id="my-textarea" value="" rows="5" name="mDesc"></textarea>
+                                <textarea class="form-textarea block w-full focus:bg-white" id="movieDesc" rows="5" name="movieDesc"></textarea>
                             </div>
                         </div>
 
                         <div class="md:flex mb-6">
                             <div class="md:w-1/3">
-                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">Image for the Card</label>
+                                <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="cardImage">Image for the Card</label>
                             </div>
                             <div class="md:w-2/3">
-                                <input id="filebutton" name="cardImage" class="inputfile" type="file">
+                                <input id="cardImage" name="cardImage" class="inputfile" type="file">
                             </div>
                         </div>
 
@@ -120,11 +119,11 @@
     <!-- movie cards -->
     <div class="wrapper">
         <div class="box-area">
-            <c:forEach var = "movie" items="${movieList}">
+
             <div class="box">
-                <img alt="${movie.mName}" src="${pageContext.request.contextPath}/getImage?id${movie.mId}">
+                <img alt="images/venom.jpg" src="images/deadpool.jpg">
                 <div class="overlay">
-                    <h3>${movie.mName}</h3>
+                    <h3>Deadpool & Wolverine</h3>
 
                     <!-- edit button -->
                     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
@@ -136,7 +135,6 @@
                     </button>
                 </div>
             </div>
-            </c:forEach>
         </div>
     </div>
     <!-- /movie cards -->
@@ -228,14 +226,18 @@
 <!-- script to validate empty inputs in add movie modal -->
 <script>
     function validateForm() {
-        var a = document.forms["addForm"]["movieName"].value;
-        var b = document.forms["addForm"]["price"].value;
-        var c = document.forms["addForm"]["txtarea"].value;
-        var d = document.forms["addForm"]["filebutton"].value;
-        if ((a == null || a == "") || (b == null || b == "") || (c == null || c == "") || (d == null || d == "")) {
-            alert("Please Fill In All Required Fields");
+        var movieId = document.forms["addForm"]["movieId"].value;
+        var movieName = document.forms["addForm"]["movieName"].value;
+        var moviePrice = document.forms["addForm"]["mPrice"].value;
+        var movieDesc = document.forms["addForm"]["mDesc"].value;
+        var fileInput = document.forms["addForm"]["cardImage"].value;
+
+        if (!movieId || !movieName || !moviePrice || !movieDesc || !fileInput) {
+            alert("Please fill in all required fields.");
             return false;
         }
+
+        return true; // All validations passed
     }
 </script>
 

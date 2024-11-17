@@ -9,7 +9,8 @@
 </h1>
 <br/>
 
-    <a href="${pageContext.request.contextPath}/adminMovies">Admin Dashboard</a> <br>
+    <a href="${pageContext.request.contextPath}/movieListServlet">Admin Dashboard</a> <br>
+    <a href="admin.jsp">Hello Servlet</a>
 
 </body>
 </html>
