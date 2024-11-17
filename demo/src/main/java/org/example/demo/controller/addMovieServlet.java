@@ -43,7 +43,7 @@ public class addMovieServlet extends HttpServlet {
             movieServices mc = new movieServices();
             mc.addMovie(mov, inputStream);
 
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin.jsp");
             rd.forward(request, response);
         }
         catch (Exception e) {

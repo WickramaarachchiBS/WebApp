@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: USER
@@ -119,11 +120,11 @@
     <!-- movie cards -->
     <div class="wrapper">
         <div class="box-area">
-
+            <c:forEach var = "movie" items="${movieList}">
             <div class="box">
-                <img alt="" src="images/deadpool.jpg">
+                <img alt="${movie.mName}" src="${pageContext.request.contextPath}/getImage?id${movie.mId}">
                 <div class="overlay">
-                    <h3>Deadpool & Wolverine</h3>
+                    <h3>${movie.mName}</h3>
 
                     <!-- edit button -->
                     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
@@ -135,95 +136,13 @@
                     </button>
                 </div>
             </div>
-
-            <div class="box">
-                <img alt="" src="images/wild-robot.jpg">
-                <div class="overlay">
-                    <h3>The Wild Robot</h3>
-
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                        <a href="#">Edit</a>
-                    </button>
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-                        <a href="#">Delete</a>
-                    </button>
-
-                </div>
-            </div>
-            <div class="box">
-                <img alt="" src="images/It-ends-with-us-latest-edition-3.jpg">
-                <div class="overlay">
-                    <h3>It ends with Us</h3>
-
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                        <a href="#">Edit</a>
-                    </button>
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-                        <a href="#">Delete</a>
-                    </button>
-
-                </div>
-            </div>
-            <div class="box">
-                <img alt="" src="images/transformers.jpg">
-                <div class="overlay">
-                    <h3>Transformers One</h3>
-
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                        <a href="#">Edit</a>
-                    </button>
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-                        <a href="#">Delete</a>
-                    </button>
-
-                </div>
-            </div>
-            <div class="box">
-                <img alt="" src="images/smile.jpg">
-                <div class="overlay">
-                    <h3>Smile 2</h3>
-
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                        <a href="#">Edit</a>
-                    </button>
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-                        <a href="#">Delete</a>
-                    </button>
-
-                </div>
-            </div>
-            <div class="box">
-                <img alt="" src="images/Joker Folie à Deux.jpg ">
-                <div class="overlay">
-                    <h3>Joker: Folie à Deux</h3>
-
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                        <a href="#">Edit</a>
-                    </button>
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-                        <a href="#">Delete</a>
-                    </button>
-
-                </div>
-            </div>
-            <div class="box">
-                <img alt="" src="images/venom.jpg">
-                <div class="overlay">
-                    <h3>Venom: The Last Dance</h3>
-
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                        <a href="#">Edit</a>
-                    </button>
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-                        <a href="#">Delete</a>
-                    </button>
-
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
+    <!-- /movie cards -->
+
 </div>
-<!-- /movie cards -->
+
 
 
 

@@ -8,7 +8,8 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
-<a href="admin.jsp">Hello Servlet</a>
+
+    <a href="${pageContext.request.contextPath}/adminMovies">Admin Dashboard</a> <br>
+
 </body>
 </html>

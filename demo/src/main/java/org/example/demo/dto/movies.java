@@ -44,7 +44,6 @@ public class movies {
     public Blob getImage() {
         return Image;
     }
-
     public void setImage(Blob image) {
         Image = image;
     }

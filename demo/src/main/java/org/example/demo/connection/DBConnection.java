@@ -18,8 +18,6 @@ public class DBConnection {
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }
-        //This line loads the MySQL JDBC driver class
-        //Class.forName("com.mysql.jdbc.Driver");
 
         //connect to db
         return DriverManager.getConnection(url, username, password);
