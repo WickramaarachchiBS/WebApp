@@ -7,6 +7,7 @@ public class Movie {
     String price;
     String imagePath;
 
+
     public int getId() {
         return id;
     }

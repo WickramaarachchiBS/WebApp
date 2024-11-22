@@ -10,7 +10,7 @@
 <br/>
 
     <a href="${pageContext.request.contextPath}/movieListServlet">Admin Dashboard</a> <br>
-    <a href="admin.jsp">Hello Servlet</a>
+    <a href="RetrieveMovieServlet">Go to Admin Panel</a>
 
 </body>
 </html>

@@ -5,6 +5,8 @@
   Time: 8:00 PM
   To change this template use File | Settings | File Templates.
 --%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +36,6 @@
 <body>
 
 <!-- navbar -->
-
 
 
 <div class="cardArea">
@@ -119,11 +120,12 @@
     <!-- movie cards -->
     <div class="wrapper">
         <div class="box-area">
-
+            <!-- Loop through movies -->
+            <c:forEach var="movie" items="${movies}">
             <div class="box">
-                <img alt="images/venom.jpg" src="images/deadpool.jpg">
+                <img src="${pageContext.request.contextPath}/assets/${movie.imagePath}" alt="${movie.title}">
                 <div class="overlay">
-                    <h3>Deadpool & Wolverine</h3>
+                    <h3>${movie.title}</h3>
 
                     <!-- edit button -->
                     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
@@ -135,6 +137,7 @@
                     </button>
                 </div>
             </div>
+            </c:forEach>
         </div>
     </div>
     <!-- /movie cards -->

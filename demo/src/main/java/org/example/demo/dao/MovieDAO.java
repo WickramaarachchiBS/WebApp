@@ -4,6 +4,9 @@ import org.example.demo.dto.Movie;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MovieDAO {
@@ -26,5 +29,32 @@ public class MovieDAO {
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Movie> getAllMovies() {
+        List<Movie> movies = new ArrayList<>();
+
+        String query = "SELECT * FROM movies";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Movie movie = new Movie();
+
+                movie.setId(rs.getInt("mid"));
+                movie.setTitle(rs.getString("mname"));
+                movie.setPrice(rs.getString("price"));
+                movie.setDesc(rs.getString("description"));
+                movie.setImagePath(rs.getString("image_path"));
+                movies.add(movie);
+            }
+
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return movies;
     }
 }
