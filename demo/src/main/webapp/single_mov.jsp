@@ -15,9 +15,12 @@
     <!-- bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- css -->
-    <link rel="stylesheet" href="CSS/single_movie.css">
+    <link rel="stylesheet" href="CSS/single_mov.css">
 </head>
 <body>
+    <%--  navbar  --%>
+    <jsp:include page="navbar.jsp">Navbar</jsp:include>
+
 
     <div class="container1">
         <div class="root">
