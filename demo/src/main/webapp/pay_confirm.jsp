@@ -13,7 +13,8 @@
     <!-- title -->
     <title>ThankYou...</title>
     <!-- css -->
-    <link rel="stylesheet" href="pay_confirm.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/pay_confirm.css">
+
 </head>
 <body>
 
