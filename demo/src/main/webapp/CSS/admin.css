@@ -61,7 +61,7 @@ body{
 .modal-header{
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: #c0ad05ce;;
+  background-color: #c0ad05ce;
   color: #ffffff;
 }
 .form1{
@@ -70,7 +70,7 @@ body{
 #modal-body{
   background-color: rgba(0, 0, 0, 0.74);;
   color: #814343;
-  padding-bottom: 0%;
+  padding-bottom: 0;
 }
 
 /* movie cards css */

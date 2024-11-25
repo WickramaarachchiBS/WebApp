@@ -30,13 +30,13 @@
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
     <!-- css -->
-    <link rel="stylesheet" href="CSS/admin.css">
+    <link rel="stylesheet" type="text/css" href="CSS/admin.css">
 </head>
 
 <body>
 
 <!-- navbar -->
-
+<jsp:include page="navbar.jsp">Navbar</jsp:include>
 
 <div class="cardArea">
     <!-- add movie button -->
