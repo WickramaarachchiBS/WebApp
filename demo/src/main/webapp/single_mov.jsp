@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="CSS/single_movie.css">
 </head>
 <body>
+    <%--navbar--%>
+    <jsp:include page="navbar.jsp"></jsp:include>
+
 
     <div class="container1">
         <div class="root">
