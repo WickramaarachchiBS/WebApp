@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Land</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    
+    
+    <style>
+/* General Section Styling */
+.latest-movies {
+    padding: 40px 20px;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+}
+
+.latest-movies h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ff9800;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.latest-movies h2:hover {
+    color: #ff5722;
+}
+
+.latest-movies h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ff5722;
+    transition: width 0.3s ease;
+}
+
+.latest-movies h2:hover::after {
+    width: 100%;
+}
+
+/* Cards Container */
+.movie-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Individual Card Styling */
+.movie-card {
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 400px;
+    height: 550px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Card Details */
+.movie-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.movie-details h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #ff9800;
+}
+
+.movie-details p {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+/* Book Now Button */
+.book-now-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #ff5722;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.book-now-btn:hover {
+    background-color: #e64a19;
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .movie-card {
+        width: 350px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .movie-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .latest-movies h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-card img {
+        height: 250px;
+    }
+
+    .movie-details h3 {
+        font-size: 1.5rem;
+    }
+
+    .movie-details p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer Social Media Icons */
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ff9800;
+}
+
+/* Footer Styling */
+.footer {
+    background: #121212;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 20px;
+    min-width: 250px;
+}
+
+.footer-section h2 {
+    color: #ff9800;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.footer-section p,
+.footer-section ul {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-section ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ff9800;
+}
+
+/* Latest News Section */
+.news-alert {
+    background: #1e1e1e;
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    max-height: 150px; /* Controls height of the news section */
+    overflow-y: auto; /* Enables scrolling for longer news lists */
+}
+
+.news-alert p {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background: #1e1e1e;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+}
+
+
+
+
+
+
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Push the search bar to the right */
+}
+
+.search-input {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.search-btn {
+    background-color: transparent;
+    border: none;
+    color: #f0c541; /* Golden color for icon */
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-btn:hover {
+    color: #fff;
+}
+
+
+
+
+
+
+.login-icon {
+    position: absolute;
+    right: 5px; /* Adjust the position */
+    font-size: 18px; /* Size of the login icon */
+    color: #f0c541; /* Color of the icon */
+    cursor: pointer;
+}
+
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+    
+    <header>
+
+        <nav>
+            <a href="" class="active">Home</a>
+            <a href="">Movies</a>
+            <a href="">Genres</a>
+            <a href="">Trending</a>
+            <a href="">About Us</a>
+        </nav>
+        
+        
+     
+        
+        
+         <div class="search-container">
+        <input type="text" placeholder="Search..." class="search-input">
+        
+         <i class="fas fa-user login-icon"></i>
+    </div>
+        
+        
+     
+        
+
+    </header>
+
+
+    <div class="carousel">
+
+        <div class="list">
+
+            <div class="item" style="background-image: url(deadpool1.jpg);">
+                <div class="content">
+                    <div class="title">Welcome to Movie Land</div>
+                    <div class="name">Explore the World of Cinema</div>
+                    <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
+                    <div class="btn">
+                        <button>See More</button>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url(mazerunner.jpg);">
+                <div class="content">
+                    <div class="title">Welcome to Movie Land</div>
+                    <div class="name">Explore the World of Cinema</div>
+                    <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
+                    <div class="btn">
+                        <button>See More</button>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url(wildrobot.jpg);">
+                <div class="content">
+                    <div class="title">Welcome to Movie Land</div>
+                    <div class="name">Explore the World of Cinema</div>
+                    <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
+                    <div class="btn">
+                        <button>See More</button>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url(image11.jpg);">
+                <div class="content">
+                    <div class="title">Welcome to Movie Land</div>
+                    <div class="name">Explore the World of Cinema</div>
+                    <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
+                    <div class="btn">
+                        <button>See More</button>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url(spider.jpg);">
+                <div class="content">
+                    <div class="title">Welcome to Movie Land</div>
+                    <div class="name">Explore the World of Cinema</div>
+                    <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
+                    <div class="btn">
+                        <button>See More</button>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--next prev button-->
+        <div class="arrows">
+            <button class="prev"><</button>
+            <button class="next">></button>
+        </div>
+
+        <!-- time running -->
+        <div class="timeRunning"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+ <section class="latest-movies">
+    <h2>Latest Movies</h2>
+    <div class="movie-cards-container">
+        <!-- Card 1 -->
+        <div class="movie-card">
+            <img src="image1.jpg" alt="Movie 1">
+            <div class="movie-details">
+                <h3>Maze Runner</h3>
+                <p>An exciting movie full of adventure and thrills!</p>
+                <button class="book-now-btn">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="movie-card">
+            <img src="image2.jpg" alt="Movie 2">
+            <div class="movie-details">
+                <h3>Spider Man</h3>
+                <p>unforgettable moments!</p>
+                <button class="book-now-btn">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="movie-card">
+            <img src="image3.jpg" alt="Movie 3">
+            <div class="movie-details">
+                <h3>Joker 2</h3>
+                <p>Dive into a thrilling story of excitement!</p>
+                <button class="book-now-btn">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="movie-card">
+            <img src="image4.jpg" alt="Movie 4">
+            <div class="movie-details">
+                <h3>Deadpool</h3>
+                <p>A mind-bending thriller.</p>
+                <button class="book-now-btn">Book Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     <section class="latest-movies">
+    <h2>Trending Movies</h2>
+    <div class="movie-cards-container">
+        <!-- Card 1 -->
+        <div class="movie-card">
+            <img src="spider.jpg" alt="Movie 1">
+            <div class="movie-details">
+                <h3>Spider Man 2</h3>
+                <p>An exciting movie full of adventure and thrills!</p>
+                <button class="book-now-btn">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="movie-card">
+            <img src="oppen.jpeg" alt="Movie 2">
+            <div class="movie-details">
+                <h3>Oppenheimer</h3>
+                <p>A heartwarming tale that you can’t miss.</p>
+                <button class="book-now-btn">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="movie-card">
+            <img src="harry.jpg" alt="Movie 3">
+            <div class="movie-details">
+                <h3>Harry Poter</h3>
+                <p>An action-packed blockbuster!</p>
+                <button class="book-now-btn">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="movie-card">
+            <img src="wildrobot.jpg" alt="Movie 4">
+            <div class="movie-details">
+                <h3>Wild Robot</h3>
+                <p>A mind-bending thriller.</p>
+                <button class="book-now-btn">Book Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Logo and About -->
+        <div class="footer-section about">
+            <h2>Movie Land</h2>
+            <p>
+                Explore the world of cinema with Movie Land. Your destination for the latest blockbusters, timeless classics, and movie reviews.
+            </p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section links">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">Genres</a></li>
+                <li><a href="#">Trending</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Latest News -->
+        <div class="footer-section news">
+            <h2>Latest News</h2>
+            <div class="news-alert">
+                <p>🎥 *Avatar 3 Trailer Released!* - Coming to cinemas in 2025.</p>
+                <p>🍿 *New Netflix Hits* - Don’t miss the latest binge-worthy series.</p>
+                <p>🎬 *Oscars 2024 Nominations* - Check out the top contenders!</p>
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section contact">
+            <h2>Contact Us</h2>
+            <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+            <p><i class="fas fa-envelope"></i> support@movieland.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Movie Lane, Film City, CA</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2024 Movie Land | Designed by VS</p>
+    </div>
+</footer>
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>
