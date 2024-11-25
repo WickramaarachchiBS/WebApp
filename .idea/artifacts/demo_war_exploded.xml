@@ -22,7 +22,7 @@
         </element>
       </element>
       <element id="javaee-facet-resources" facet="demo/web/Web" />
-      <element id="dir-copy" path="$PROJECT_DIR$/demo/target/demo-1.0-SNAPSHOT" />
+      <element id="dir-copy" path="$PROJECT_DIR$/demo/src/main/webapp/CSS" />
     </root>
   </artifact>
 </component>
