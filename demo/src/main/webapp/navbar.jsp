@@ -8,76 +8,155 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <title>Responsive Navbar</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
-    /* Header Section */
     header {
       width: 100%;
-      max-width: 100%;
-      height: 50px;
+      height: auto;
+      background-color: #1a1a1a;
       display: flex;
       align-items: center;
-      justify-content: space-between; /* Align left and right sections */
-      padding: 0 20px;
-      background-color: #1a1a1a; /* Dark background for contrast */
+      justify-content: space-between;
+      padding: 10px 20px;
       position: relative;
-      z-index: 1000;
+    }
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .logo1 {
       font-size: 1.2rem;
-      color: #f0c541; /* Golden color for the logo text */
+      color: #f0c541;
       font-weight: 100;
-      margin-left: 1100px; /* Align text logo to the left */
+      text-decoration: none;
     }
     .logo {
-      width: 35px; /* Adjust logo size */
+      width: 35px;
       height: 35px;
-      border-radius: 50%; /* Rounded logo */
-      margin-left: 10px; /* Add space to the left of the logo */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for styling */
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    header nav a {
-      color: #fff; /* Golden color for navigation links */
+    nav {
+      display: flex;
+      gap: 10px;
+    }
+    nav a {
+      color: #fff;
       padding: 5px 10px;
       font-size: 16px;
       transition: 0.2s;
       text-decoration: none;
-      margin-right: 10px; /* Spacing between navigation links */
     }
     a.active {
-      background: #f0c541; /* Golden highlight for active link */
+      background: #f0c541;
       border-radius: 2px;
+      color: #1a1a1a;
     }
     a:hover {
-      background: #f0c541; /* Golden highlight on hover */
+      background: #f0c541;
       border-radius: 2px;
+      color: #1a1a1a;
+    }
+    .hamburger {
+      display: none; /* Hidden by default */
+      flex-direction: column; /* Stack bars vertically */
+      cursor: pointer; /* Pointer cursor on hover */
+    }
+    .bar {
+      width: 25px;
+      height: 2px;
+      background-color: #f0c541; /* Color of the bars */
+      margin: 3px 0; /* Space between bars */
+      transition: all 0.3s ease; /* Transition for smooth effect */
+    }
+    .login-icon {
+      right: 5px; /* Adjust the position */
+      font-size: 18px; /* Size of the login icon */
+      color: #f0c541; /* Color of the icon */
+      cursor: pointer; /* Pointer cursor on hover */
+    }
+    @media screen and (max-width: 768px) {
+      .hamburger {
+        display: flex; /* Show hamburger menu in mobile view */
+        z-index: 10; /* Ensure it is above other elements */
+        position: relative; /* Position relative for stacking context */
+        margin-left:auto; /* Align it to the right */
+        transition-duration :0.3s ; /* Smooth transition for hamburger menu */
+        transform-origin : center ; /* Set transform origin for rotation effect */
+      }
+      nav {
+        display: flex;
+        flex-direction: column; /* Stack menu items vertically */
+        width: 100%; /* Full width for mobile view */
+        position: absolute; /* Position below the header */
+        top: 100%;
+        left: 0;
+        background-color: #1a1a1a;
+        padding: 0 5px 0px 5px;
+        overflow: hidden; /* Hide overflowing items */
+        max-height: 0; /* Initially collapsed */
+        transition: max-height 0.3s ease-out; /* Smooth dropdown effect */
+      }
+      nav.active {
+        max-height: 300px; /* Expand to fit all items */
+      }
+      nav a {
+        width :100% ;
+        text-align : center ;
+        padding :10px ;
+        margin-bottom :5px ;
+      }
+      .logo-section {
+        width :100% ;
+        justify-content : space-between ;
+        align-items : center ;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
+  <header>
+    <nav id="navMenu">
+      <a href="" class="active">Home</a>
+      <a href="">Movies</a>
+      <a href="">Genres</a>
+      <a href="">Trending</a>
+      <a href="">Contact</a>
+    </nav>
 
-  <nav>
-    <a href="" class="active">Home</a>
-    <a href="">Movies</a>
-    <a href="">Genres</a>
-    <a href="">Trending</a>
-    <a href="">Contact</a>
-  </nav>
+    <div class="logo-section">
+      <a href="#" class="logo1">Movie|Land</a>
+      <i class="fas fa-user login-icon"></i>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </header>
 
-  <a href="#" class="logo1">Movie|Land</a>
-  <div class="logo-container">
-    <img src="login.png" alt="Site Logo" class="logo">
-  </div>
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navMenu');
+    const bars = document.querySelectorAll('.bar');
 
-</header>
+    // Toggle active class for navigation
+    nav.classList.toggle('active');
+  }
+</script>
 
 </body>
 </html>
