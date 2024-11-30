@@ -10,149 +10,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        *{
-            font-family: 'Poppins', sans-serif;
-            box-sizing: border-box;
-        }
-        body{
-            background: #ebf2ff;
-            color: #ffffff;
-            background-image: linear-gradient(to bottom right, #1d2b22, rgb(26, 26, 1));
-        }
-        /* cards css */
-        .cardArea{
-            padding: 50px 0;
-            background-image: linear-gradient(to bottom right, #1d2b22, rgb(26, 26, 1));
-        }
-        .header{
-            text-align: center;
-            background-color: rgb(13, 68, 68);
-            margin-top: 20px;
-        }
-        .wrapper{
-            padding: 10px 10%;
-        }
-        .box-area{
-            display: grid;
-            align-content: center;
-            gap: 50px;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            grid-row: auto;
-            margin-top: 20px;
-        }
-        .box {
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
-        }
-        .box img{
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            display: block;
-            transition: transform 0.5s;
-        }
-        .box:hover img{
-            transform: scale(1.1);
-        }
-        .box:hover .overlay{
-            height: 100%;
-        }
-        .overlay {
-            width: 100%;
-            height: 0;
-            background: linear-gradient(transparent,#333333 150%);
-            border-radius: 20px;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 0 40px;
-            text-align: center;
-            font-size: 14px;
-            transition: height 0.5s;
-        }
-        .btn {
-            margin-top: 325px;
-            /* border: none; */
-            background-color: rgb(23, 131, 131);
-            transition: 0.5s;
-        }
-        .btn:hover {
-            scale: 1.2;
-            background-color: rgb(13, 68, 68);
-        }
-        .btn a{
-            color: #ebebeb;
-        }
-        .btn:active{
-            background-color: #ebebeb;
-        }
-        .text{
-            padding-top: 10px;
-            text-align: center;
-            font-size: 20px;
-        }
-    </style>
-
-    <!-- title -->
-    <title>Movie Land - Book ur fav Movie</title>
+    <title>Movie Land</title>
     <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --background-gradient-1: #141e30;
+        --background-gradient-2: #243b55;
+        --text-color: #ecf0f1;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, var(--background-gradient-1), var(--background-gradient-2));
+        color: var(--text-color);
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+      .cardArea {
+        padding: 50px 0;
+        background: transparent;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+      }
+      .header h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--text-color);
+        position: relative;
+        display: inline-block;
+      }
+      .header h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: var(--secondary-color);
+        border-radius: 2px;
+      }
+      .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+      .box-area {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+      }
+      .box {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        transform: translateY(0);
+      }
+      .box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+      }
+      .box img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      .box:hover img {
+        transform: scale(1.1);
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.8) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        padding: 20px;
+      }
+      .box:hover .overlay {
+        opacity: 1;
+      }
+      .btn {
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #2980b9;
+        transform: scale(1.05);
+      }
+      .text {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--text-color);
+      }
+    </style>
 </head>
 <body>
-    <!-- navbar -->
-
-    <!-- mov cards -->
     <div class="cardArea">
-        <div class="header">
-            <h2>NOW SHOWING</h2>
-        </div>
-        <!-- movie cards -->
-        <div class="wrapper">
-            <div class="box-area">
-                <!-- Loop through movies -->
-<%--                <c:forEach var="movie" items="${movies}">--%>
-                <div class="col">
-                    <div class="box">
-                        <img src="Assets/wild-robot.jpg" alt="#">
-                        <div class="overlay">
-                            <button type="button" class="btn" data-bs-target="#staticBackdrop2">
-                                <a href="#">Buy Tickets</a>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="text">
-                        The Wild Robot
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="box">
-                        <img src="Assets/wild-robot.jpg" alt="#">
-                        <div class="overlay">
-                            <button type="button" class="btn" data-bs-target="#staticBackdrop2">
-                                <a href="#">Buy Tickets</a>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="text">
-                        The Wild Robot
-                    </div>
-                </div>
-<%--                </c:forEach>--%>
+      <div class="header">
+        <h2>NOW SHOWING</h2>
+      </div>
+      <div class="wrapper">
+        <div class="box-area">
+          <div class="col">
+            <div class="box">
+              <img src="wild-robot.jpg" alt="The Wild Robot">
+              <div class="overlay">
+                <button type="button" class="btn">
+                  Buy Tickets
+                </button>
+              </div>
             </div>
+            <div class="text">
+              The Wild Robot
+            </div>
+          </div>
+          <div class="col">
+            <div class="box">
+              <img src="wild-robot.jpg" alt="The Wild Robot">
+              <div class="overlay">
+                <button type="button" class="btn">
+                  Buy Tickets
+                </button>
+              </div>
+            </div>
+            <div class="text">
+              The Wild Robot
+            </div>
+          </div>
         </div>
-        <!-- /movie cards -->
+      </div>
     </div>
-
 </body>
 </html>
