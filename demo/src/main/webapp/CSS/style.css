@@ -5,6 +5,110 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+/*navbar css*/
+header {
+    width: 100%;
+    height: auto;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+}
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo1 {
+    font-size: 1.2rem;
+    color: #f0c541;
+    font-weight: 100;
+    text-decoration: none;
+}
+.logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+nav {
+    display: flex;
+    gap: 10px;
+}
+nav a {
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 16px;
+    transition: 0.2s;
+    text-decoration: none;
+}
+a.active {
+    background: #f0c541;
+    border-radius: 2px;
+    color: #1a1a1a;
+}
+a:hover {
+    background: #f0c541;
+    border-radius: 2px;
+    color: #1a1a1a;
+}
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Stack bars vertically */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+.bar {
+    width: 25px;
+    height: 2px;
+    background-color: #f0c541; /* Color of the bars */
+    margin: 3px 0; /* Space between bars */
+    transition: all 0.3s ease; /* Transition for smooth effect */
+}
+.login-icon {
+    right: 5px; /* Adjust the position */
+    font-size: 18px; /* Size of the login icon */
+    color: #f0c541; /* Color of the icon */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Show hamburger menu in mobile view */
+        z-index: 10; /* Ensure it is above other elements */
+        position: relative; /* Position relative for stacking context */
+        margin-left:auto; /* Align it to the right */
+        transition-duration :0.3s ; /* Smooth transition for hamburger menu */
+        transform-origin : center ; /* Set transform origin for rotation effect */
+    }
+    nav {
+        display: flex;
+        flex-direction: column; /* Stack menu items vertically */
+        width: 100%; /* Full width for mobile view */
+        position: absolute; /* Position below the header */
+        top: 100%;
+        left: 0;
+        background-color: #1a1a1a;
+        padding: 0 5px 0px 5px;
+        overflow: hidden; /* Hide overflowing items */
+        max-height: 0; /* Initially collapsed */
+        transition: max-height 0.3s ease-out; /* Smooth dropdown effect */
+    }
+    nav.active {
+        max-height: 300px; /* Expand to fit all items */
+    }
+    nav a {
+        width :100% ;
+        text-align : center ;
+        padding :10px ;
+        margin-bottom :5px ;
+    }
+    .logo-section {
+        width :100% ;
+        justify-content : space-between ;
+        align-items : center ;
+    }
+}
 /* Header Section */
 header {
     width: 100%;
@@ -216,4 +320,232 @@ a:hover {
         left: 20px;
         width: 80%;
     }
+}
+
+
+/* General Section Styling */
+.latest-movies {
+    padding: 40px 20px;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+}
+.latest-movies h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ff9800;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.latest-movies h2:hover {
+    color: #ff5722;
+}
+.latest-movies h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ff5722;
+    transition: width 0.3s ease;
+}
+.latest-movies h2:hover::after {
+    width: 100%;
+}
+/* Cards Container */
+.movie-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+/* Individual Card Styling */
+.movie-card {
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 350px;
+    height: 550px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.movie-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+/* Card Details */
+.movie-details {
+    padding: 20px;
+    text-align: center;
+}
+.movie-details h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #ff9800;
+}
+.movie-details p {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+/* Book Now Button */
+.book-now-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #ff5722;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.book-now-btn:hover {
+    background-color: #e64a19;
+    transform: translateY(-3px);
+}
+/* Responsive Design */
+@media (max-width: 992px) {
+    .movie-card {
+        width: 350px;
+        height: 500px;
+    }
+}
+@media (max-width: 768px) {
+    .movie-card {
+        width: 100%;
+        height: auto;
+    }
+    .latest-movies h2 {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 480px) {
+    .movie-card img {
+        height: 250px;
+    }
+    .movie-details h3 {
+        font-size: 1.5rem;
+    }
+    .movie-details p {
+        font-size: 0.9rem;
+    }
+}
+/* Footer Social Media Icons */
+.social-icons {
+    margin-top: 15px;
+}
+.social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+.social-icons a:hover {
+    color: #ff9800;
+}
+/* Footer Styling */
+.footer {
+    background: #121212;
+    color: #fff;
+    padding: 20px 0;
+}
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+.footer-section {
+    flex: 1;
+    margin: 20px;
+    min-width: 250px;
+}
+.footer-section h2 {
+    color: #ff9800;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+.footer-section p,
+.footer-section ul {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+.footer-section ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+.footer-section ul li a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-section ul li a:hover {
+    color: #ff9800;
+}
+/* Latest News Section */
+.news-alert {
+    background: #1e1e1e;
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    max-height: 150px; /* Controls height of the news section */
+    overflow-y: auto; /* Enables scrolling for longer news lists */
+}
+.news-alert p {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background: #1e1e1e;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Push the search bar to the right */
+}
+.search-input {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #fff;
+    margin-right: 10px;
+}
+.search-btn {
+    background-color: transparent;
+    border: none;
+    color: #f0c541; /* Golden color for icon */
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.search-btn:hover {
+    color: #fff;
+}
+.login-icon {
+    right: 5px; /* Adjust the position */
+    font-size: 18px; /* Size of the login icon */
+    color: #f0c541; /* Color of the icon */
+    cursor: pointer;
 }
