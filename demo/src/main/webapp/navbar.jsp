@@ -87,6 +87,10 @@
       color: #f0c541; /* Color of the icon */
       cursor: pointer; /* Pointer cursor on hover */
     }
+    .login-icon:hover {
+      color: #f8f8f8;
+      background-color: #000000;
+    }
     @media screen and (max-width: 768px) {
       .hamburger {
         display: flex; /* Show hamburger menu in mobile view */
@@ -130,16 +134,17 @@
 
   <header>
     <nav id="navMenu">
-      <a href="" class="active">Home</a>
-      <a href="">Movies</a>
-      <a href="">Genres</a>
-      <a href="">Trending</a>
+      <a href="index.jsp" class="active">Home</a>
+      <a href="all_mov.jsp">Movies</a>
+      <a href="">Locations</a>
+      <a href="">About Us</a>
       <a href="">Contact</a>
     </nav>
 
     <div class="logo-section">
       <a href="#" class="logo1">Movie|Land</a>
-      <i class="fas fa-user login-icon"></i>
+      <a><i class="fas fa-user login-icon"></i></a>
+
       <div class="hamburger" onclick="toggleMenu()">
         <div class="bar"></div>
         <div class="bar"></div>

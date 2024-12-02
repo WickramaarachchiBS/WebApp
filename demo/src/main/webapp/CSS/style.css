@@ -321,8 +321,6 @@ a:hover {
         width: 80%;
     }
 }
-
-
 /* General Section Styling */
 .latest-movies {
     padding: 40px 20px;
@@ -548,4 +546,8 @@ a:hover {
     font-size: 18px; /* Size of the login icon */
     color: #f0c541; /* Color of the icon */
     cursor: pointer;
+}
+.login-icon:hover {
+    color: #f8f8f8;
+    background-color: #1a1a1a;
 }

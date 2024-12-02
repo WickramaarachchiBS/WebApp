@@ -24,7 +24,6 @@
 
 body {
   height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
@@ -36,6 +35,7 @@ body {
   width: 100%;
   background-color: #fff;
   padding: 25px 30px;
+  margin: 50px auto;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
@@ -178,11 +178,10 @@ form .button input:hover {
   }
 }
   </style>
-  <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
   <%--  navbar  --%>
-    <jsp:include page="navbar.jsp">Navbar</jsp:include>
+  <jsp:include page="navbar.jsp" />
 
   <div class="container">
     <!-- Title section -->
@@ -244,9 +243,13 @@ form .button input:hover {
         <div class="button">
           <input type="submit" value="Create">
         </div>
+        <p>Already have an account..? &nbsp; <u><a href="login.jsp">Login here</a></u></p>
       </form>
     </div>
   </div>
-  <jsp:include page="footer.jsp">Navbar</jsp:include>
+
+  <!-- footer -->
+<%--  <jsp:include page="footer.jsp" />--%>
+
 </body>
 </html>

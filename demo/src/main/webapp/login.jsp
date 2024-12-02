@@ -21,17 +21,17 @@
     }
     body {
       height: 100vh;
-      display: flex;
       justify-content: center;
       align-items: center;
       padding: 10px;
-      background: linear-gradient(135deg, #71b7e6, #9b59b6);   /*bg color*/
+      background: linear-gradient(135deg, #000000, #000000);   /*bg color*/
     }
     .container {
       max-width: 500px;
       width: 100%;
       background-color: #fff;
       padding: 25px 30px;
+      margin: 50px auto;
       border-radius: 5px;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
     }
@@ -76,30 +76,14 @@
     .user-details .input-box input:valid {
       border-color: #9b59b6;
     }
-    form .gender-details .gender-title {
-      font-size: 20px;
-      font-weight: 500;
-    }
-    form .category {
-      display: flex;
-      width: 80%;
-      margin: 14px;
-      justify-content:baseline;
-      gap: 50px;
-    }
+
+
     form .category label {
       display: flex;
       align-items: center;
       cursor: pointer;
     }
-    form .category label .dot {
-      height: 18px;
-      width: 18px;
-      border-radius: 50%;
-      margin-right: 10px;
-      background: #d9d9d9;
-      border: 5px solid transparent;
-    }
+
     form .button {
       display: flex;
       flex-wrap: wrap;
@@ -119,10 +103,11 @@
       letter-spacing: 1px;
       cursor: pointer;
       transition: all 0.3s ease;
-      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+      background: #ff5722;
     }
     form .button input:hover {
-      background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+      transition: all 0.3s ease;
+      background: #ff5722;
     }
     /* Responsive media query code for mobile devices */
     @media(max-width: 584px) {
@@ -133,9 +118,7 @@
         margin-bottom: 15px;
         width: 100%;
       }
-      form .category {
-        width: 100%;
-      }
+
       .content form .user-details {
         max-height: 300px;
         overflow-y: scroll;
@@ -146,9 +129,6 @@
     }
     /* Responsive media query code for mobile devices */
     @media(max-width: 459px) {
-      .container .content .category {
-        flex-direction: column;
-      }
     }
   </style>
   <title>Login</title>
@@ -156,6 +136,9 @@
 <body>
   
   <!-- navbar -->
+  <div>
+  <jsp:include page="navbar.jsp" />
+  </div>
 
   <!-- loginform -->
   <div class="container">
@@ -163,8 +146,8 @@
     <div class="title">Login</div>
     <div class="content">
       <!-- form -->
-      <form class="" action="#" method="">
-        <div class="user-details"> 
+      <form class="" action="#" method="POST">
+        <div class="user-details">
           <!-- email -->
           <div class="input-box">
             <span class="details">Email</span>
@@ -179,6 +162,7 @@
           <div class="button">
             <input type="submit" value="submit">
           </div>
+          <p>Don't have an account..? &nbsp; <u><a href="register.jsp">Register here</a></u></p>
         </div>
       </form>
 

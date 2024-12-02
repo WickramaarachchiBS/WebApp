@@ -10,9 +10,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title -->
     <title>Movie Land</title>
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- css -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
       :root {
@@ -134,6 +136,9 @@
     </style>
 </head>
 <body>
+    <!-- navbar -->
+    <jsp:include page="navbar.jsp" />
+    
     <div class="cardArea">
       <div class="header">
         <h2>NOW SHOWING</h2>
@@ -142,7 +147,7 @@
         <div class="box-area">
           <div class="col">
             <div class="box">
-              <img src="wild-robot.jpg" alt="The Wild Robot">
+              <img src="Assets/wild-robot.jpg" alt="The Wild Robot">
               <div class="overlay">
                 <button type="button" class="btn">
                   Buy Tickets
@@ -155,7 +160,7 @@
           </div>
           <div class="col">
             <div class="box">
-              <img src="wild-robot.jpg" alt="The Wild Robot">
+              <img src="Assets/wild-robot.jpg" alt="The Wild Robot">
               <div class="overlay">
                 <button type="button" class="btn">
                   Buy Tickets

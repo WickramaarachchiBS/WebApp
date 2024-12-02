@@ -48,13 +48,13 @@
     <h2>Thank you for choosing us...</h2> <br>
     <p>An email containing your reciept will be sent to you. <br>
         Please check your email. </p>
-    <p class="bottom-text">You will redirected to home page shortly.<a href="index.html">&nbsp;&nbsp;&nbsp;<u>Redirect Now →</u></a></p>
+    <p class="bottom-text">You will redirected to home page shortly.<a href="index.jsp">&nbsp;&nbsp;&nbsp;<u>Redirect Now →</u></a></p>
 </main>
 
 
 <script>
     setTimeout(function() {
-      window.location.href = "index.html"; // Replace with your desired URL
+      window.location.href = "index.jsp"; // Replace with your desired URL
     }, 30000); // 30 seconds
 </script>
 

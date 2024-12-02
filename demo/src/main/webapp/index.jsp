@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- title -->
@@ -13,29 +14,12 @@
 </head>
 <body>
     <!-- navbar -->
-    <header>
-        <nav id="navMenu">
-            <a href="" class="active">Home</a>
-            <a href="">Movies</a>
-            <a href="">Locations</a>
-            <a href="">About Us</a>
-            <a href="">Contact</a>
-        </nav>
-
-        <div class="logo-section">
-            <a href="#" class="logo1">Movie|Land</a>
-            <i class="fas fa-user login-icon"></i>
-            <div class="hamburger" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="navbar.jsp" />
 
     <!-- carousal -->
     <div class="carousel">
         <div class="list">
+            <c:foreach var ="movie" items="${movies}">
             <div class="item" style="background-image: url(Assets/deadpool1.jpg);">
                 <div class="content">
                     <div class="title">Welcome to Movie Land</div>
@@ -46,6 +30,7 @@
                     </div>
                 </div>
             </div>
+            </c:foreach>
 
             <div class="item" style="background-image: url(Assets/maze_runner.jpg);">
                 <div class="content">
@@ -163,7 +148,6 @@
                 <div class="movie-details">
                     <h3>Spider Man 2</h3>
                     <p>An exciting movie full of adventure and thrills!</p>
-                    <button class="book-now-btn">Book Now</button>
                 </div>
             </div>
 
@@ -173,7 +157,6 @@
                 <div class="movie-details">
                     <h3>Oppenheimer</h3>
                     <p>A heartwarming tale that you can’t miss.</p>
-                    <button class="book-now-btn">Book Now</button>
                 </div>
             </div>
 
@@ -183,7 +166,6 @@
                 <div class="movie-details">
                     <h3>Harry Poter</h3>
                     <p>An action-packed blockbuster!</p>
-                    <button class="book-now-btn">Book Now</button>
                 </div>
             </div>
 
@@ -193,7 +175,6 @@
                 <div class="movie-details">
                     <h3>Wild Robot</h3>
                     <p>A mind-bending thriller.</p>
-                    <button class="book-now-btn">Book Now</button>
                 </div>
             </div>
         </div>
