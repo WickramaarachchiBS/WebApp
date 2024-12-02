@@ -106,6 +106,8 @@
                     <h3>Maze Runner</h3>
                     <p>An exciting movie full of adventure and thrills!</p>
                     <button class="book-now-btn">Book Now</button>
+                    <button>AdminPanel</button>
+                    <a href="admin.jsp">Admin</a>
                 </div>
             </div>
 

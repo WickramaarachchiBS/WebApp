@@ -7,5 +7,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jstl" level="project" />
     <orderEntry type="library" name="jakarta.servlet.jsp.jstl.api" level="project" />
+    <orderEntry type="library" name="javax.servlet.jstl" level="project" />
+    <orderEntry type="library" name="jakarta.servlet.jsp.jstl.api1" level="project" />
   </component>
 </module>

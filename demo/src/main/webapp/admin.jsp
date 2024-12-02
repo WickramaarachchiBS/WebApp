@@ -191,7 +191,8 @@
 
 <body>
 
-<!-- navbar -->
+    <!-- navbar -->
+    <jsp:include page="navbar.jsp" />
 
 
 <div class="cardArea">
