@@ -1,19 +1,18 @@
-package dao;
+package org.example.demo.dao;
+import org.example.demo.connection.DBConnection;
+import org.example.demo.dto.Movie;
 
-import connection.DBConnection;
-import dto.Movie;
-
-import java.security.PublicKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MovieDAO {
-    public void addMovie(Movie mov) throws SQLException, ClassNotFoundException {
-        String query = "INSERT INTO movies(mid, name, price, description, image_path) VALUES(?,?,?,?,?)";
+    public void addMovie(Movie mov) {
+
+        String query = "INSERT INTO movies(mid, mname, price, description, image_path) VALUES (?,?,?,?,?)";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -32,14 +31,14 @@ public class MovieDAO {
         }
     }
 
-    public List<Movie> getAllMovies() throws SQLException, ClassNotFoundException {
+    public List<Movie> getAllMovies() {
         List<Movie> movies = new ArrayList<>();
 
         String query = "SELECT * FROM movies";
 
-        try (Connection con = DBConnection.getConnection();
-            PreparedStatement stmt = con.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Movie movie = new Movie();
@@ -49,6 +48,11 @@ public class MovieDAO {
                 movie.setPrice(rs.getString("price"));
                 movie.setDesc(rs.getString("description"));
                 movie.setImagePath(rs.getString("image_path"));
+
+                String fullPath = rs.getString("image_path");
+                String relativePath = fullPath.substring(fullPath.lastIndexOf("webapp/") + 7);
+                movie.setImagePath(relativePath);
+
                 movies.add(movie);
             }
 
@@ -58,7 +62,4 @@ public class MovieDAO {
         }
         return movies;
     }
-
-
-
 }

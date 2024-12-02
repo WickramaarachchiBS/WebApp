@@ -1,4 +1,4 @@
-package dto;
+package org.example.demo.dto;
 
 public class Movie {
     int id;
