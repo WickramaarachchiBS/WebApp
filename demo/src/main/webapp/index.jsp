@@ -52,6 +52,9 @@
                     <div class="btn">
                         <button>See More</button>
 
+                            <a href="/RetrieveMovieServlet">adminpanel</a>
+
+
                     </div>
                 </div>
             </div>
