@@ -48,6 +48,11 @@ public class MovieDAO {
                 movie.setPrice(rs.getString("price"));
                 movie.setDesc(rs.getString("description"));
                 movie.setImagePath(rs.getString("image_path"));
+
+                String fullPath = rs.getString("image_path");
+                String relativePath = fullPath.substring(fullPath.lastIndexOf("webapp/") + 7);
+                movie.setImagePath(relativePath);
+
                 movies.add(movie);
             }
 

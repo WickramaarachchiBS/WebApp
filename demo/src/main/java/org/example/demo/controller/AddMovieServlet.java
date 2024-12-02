@@ -14,7 +14,7 @@ import jakarta.servlet.annotation.MultipartConfig;
 @MultipartConfig
 public class AddMovieServlet extends HttpServlet {
 
-    private static final String UPLOAD_DIRECTORY = "C:/Users/USER/Desktop/SE2 Web App/WebApp/demo/src/main/webapp/assets"; // Your existing directory name
+    private static final String UPLOAD_DIRECTORY = "C:/Users/USER/Desktop/ad/WebApp/demo/src/main/webapp/assets"; // Your existing directory name
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
