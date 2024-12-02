@@ -5,11 +5,31 @@
   Time: 8:00 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <title>AdminPortal</title>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- tailwind css -->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet">
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- fonts -->
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+    <!-- css -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         *{
@@ -74,7 +94,7 @@
         .modal-header{
             padding-top: 1%;
             padding-bottom: 1%;
-            background-color: #c0ad05ce;
+            background-color: #c0ad05ce;;
             color: #ffffff;
         }
         .form1{
@@ -83,7 +103,7 @@
         #modal-body{
             background-color: rgba(0, 0, 0, 0.74);;
             color: #814343;
-            padding-bottom: 0;
+            padding-bottom: 0%;
         }
 
         /* movie cards css */
@@ -167,31 +187,12 @@
             height: 100%;
         }
     </style>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-
-    <title>Home</title>
-
-    <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <!-- tailwind css -->
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet">
-
-    <!-- font awesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- fonts -->
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-
-    <!-- css -->
-    <link rel="stylesheet" type="text/css" href="">
 </head>
 
 <body>
 
 <!-- navbar -->
+
 
 <div class="cardArea">
     <!-- add movie button -->
@@ -269,29 +270,26 @@
     </div>
     <!-- /Add button modal -->
 
-
-
-
     <!-- movie cards -->
     <div class="wrapper">
         <div class="box-area">
             <!-- Loop through movies -->
             <c:forEach var="movie" items="${movies}">
-            <div class="box">
-                <img src="Assets/deadpool.jpg" alt="${movie.title}">
-                <div class="overlay">
-                    <h3>${movie.title}</h3>
+                <div class="box">
+                    <img src="${pageContext.request.contextPath}/${movie.imagePath}" alt="${movie.title}" onerror="this.src='path/to/default/image.jpg'">
+                    <div class="overlay">
+                        <h3>${movie.title}</h3>
 
-                    <!-- edit button -->
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                        <a href="#">Edit</a>
-                    </button>
-                    <!-- delete button -->
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-                        <a href="#">Delete</a>
-                    </button>
+                        <!-- edit button -->
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                            <a href="#">Edit</a>
+                        </button>
+                        <!-- delete button -->
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                            <a href="#">Delete</a>
+                        </button>
+                    </div>
                 </div>
-            </div>
             </c:forEach>
         </div>
     </div>
@@ -336,7 +334,7 @@
                             <label class="block text-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">Movie Description</label>
                         </div>
                         <div class="md:w-2/3">
-                            <textarea class="form-textarea block w-full focus:bg-white" id="my-textarea"  rows="5" name="txtarea"></textarea>
+                            <textarea class="form-textarea block w-full focus:bg-white" id="my-textarea" value="" rows="5" name="txtarea"></textarea>
                         </div>
                     </div>
                     <div class="md:flex mb-6">
@@ -384,11 +382,11 @@
 <!-- script to validate empty inputs in add movie modal -->
 <script>
     function validateForm() {
-        const movieId = document.forms["addForm"]["movieId"].value;
-        const movieName = document.forms["addForm"]["movieName"].value;
-        const moviePrice = document.forms["addForm"]["mPrice"].value;
-        const movieDesc = document.forms["addForm"]["mDesc"].value;
-        const fileInput = document.forms["addForm"]["cardImage"].value;
+        var movieId = document.forms["addForm"]["movieId"].value;
+        var movieName = document.forms["addForm"]["movieName"].value;
+        var moviePrice = document.forms["addForm"]["mPrice"].value;
+        var movieDesc = document.forms["addForm"]["mDesc"].value;
+        var fileInput = document.forms["addForm"]["cardImage"].value;
 
         if (!movieId || !movieName || !moviePrice || !movieDesc || !fileInput) {
             alert("Please fill in all required fields.");
