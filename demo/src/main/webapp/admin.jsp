@@ -103,7 +103,7 @@
         #modal-body{
             background-color: rgba(0, 0, 0, 0.74);;
             color: #814343;
-            padding-bottom: 0%;
+            padding-bottom: 0;
         }
 
         /* movie cards css */
@@ -204,12 +204,12 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Movie</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel1">Add Movie</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <!-- input section -->
-                <div id='modal-body' class="p-8 mt-6 lg:mt-0 rounded shadow">
+                <div id='modal-body1' class="p-8 mt-6 lg:mt-0 rounded shadow">
 
                     <form class="form1" name="addForm" action="AddMovieServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
 
@@ -306,7 +306,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Movie</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel2">Edit Movie</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
