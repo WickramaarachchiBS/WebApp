@@ -16,6 +16,7 @@
     <!-- navbar -->
     <jsp:include page="navbar.jsp" />
 
+    <a href=""></a>
     <!-- carousal -->
     <div class="carousel">
         <div class="list">
@@ -51,8 +52,6 @@
                     <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
                     <div class="btn">
                         <button>See More</button>
-
-                            <a href="/RetrieveMovieServlet">adminpanel</a>
 
 
                     </div>
@@ -107,7 +106,7 @@
                     <p>An exciting movie full of adventure and thrills!</p>
                     <button class="book-now-btn">Book Now</button>
                     <button>AdminPanel</button>
-                    <a href="admin.jsp">Admin</a>
+                    <a href="RetrieveMovieServlet">Admin</a>
                 </div>
             </div>
 
