@@ -139,41 +139,17 @@
         <input type="hidden" name="movieTitle" value="${movieTitle}">
         <input type="hidden" name="totalPrice" value="${totalPrice}">
         <input type="hidden" name="selectedSeats" value="${selectedSeats}">
-
-<%--        <div class="input-container">--%>
-<%--            <i class="fas fa-user"></i>--%>
-<%--            <input type="text" name="username" id="username" placeholder="Username" required>--%>
-<%--        </div>--%>
-
-<%--        <div class="input-container">--%>
-<%--            <i class="fas fa-envelope"></i>--%>
-<%--            <input type="email" name="email" id="email" placeholder="Email" required>--%>
-<%--        </div>--%>
-
-<%--        <div class="input-container">--%>
-<%--            <i class="fas fa-credit-card"></i>--%>
-<%--            <input type="text" name="cardNumber" id="cardNumber" placeholder="Card Number" required>--%>
-<%--        </div>--%>
-
-<%--        <div class="input-container">--%>
-<%--            <i class="fas fa-calendar-alt"></i>--%>
-<%--            <input type="text" name="expiryDate" id="expiryDate" placeholder="Expiry Date (MM/YY)" required>--%>
-<%--        </div>--%>
-
-<%--        <div class="input-container">--%>
-<%--            <i class="fas fa-lock"></i>--%>
-<%--            <input type="number" name="cvv" id="cvv" placeholder="CVV" required>--%>
-<%--        </div>--%>
+        <input type="hidden" id="customer-email" name="email" value="rangekillerrangekiller@gmail.com">
     </form>
 
     <div id="paypal-button-container"></div>
-    <form action="TempServlet" method="POST" class="payment-form">
-        <input type="hidden" name="movieTitle" value="${movieTitle}">
-        <input type="hidden" name="totalPrice" value="${totalPrice}">
-        <input type="hidden" name="selectedSeats" value="${selectedSeats}">
-        <input type="hidden" name="email" value="rangekillerrangekiller@gmail.com" required>
-        <button type="submit">Pay with Card</button>
-    </form>
+<%--    <form action="TempServlet" method="POST" class="payment-form">--%>
+<%--        <input type="hidden" name="movieTitle" value="${movieTitle}">--%>
+<%--        <input type="hidden" name="totalPrice" value="${totalPrice}">--%>
+<%--        <input type="hidden" name="selectedSeats" value="${selectedSeats}">--%>
+<%--        <input type="hidden" name="email" value="rangekillerrangekiller@gmail.com" required>--%>
+<%--        <button type="submit">Pay with Card</button>--%>
+<%--    </form>--%>
     <div><a href="feedback.jsp">Feedback</a></div>
 </div>
 
@@ -197,35 +173,39 @@
         },
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
-                alert('Payment completed by ' + details.payer.name.given_name);
-
-                var form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'PaymentServlet';
-
-                form.appendChild(createInput('movieTitle', '${movieTitle}'));
-                form.appendChild(createInput('totalPrice', '${totalPrice}'));
-                form.appendChild(createInput('selectedSeats', '${selectedSeats}'));
-                form.appendChild(createInput('username', document.getElementById('username').value));
-                form.appendChild(createInput('email', document.getElementById('email').value));
-                form.appendChild(createInput('paypalPaymentID', data.orderID)); // PayPal Order ID
-
-                document.body.appendChild(form);
-                form.submit();
+                const email = document.getElementById('customer-email').value;
+                // First send payment data to PaymentServlet
+                fetch('PaymentServlet', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        'movieTitle': '${movieTitle}',
+                        'totalPrice': '${totalPrice}',
+                        'selectedSeats': '${selectedSeats}',
+                        'email': email,
+                        'paypalPaymentID': data.orderID
+                    })
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            // After successful payment processing, redirect to feedback.jsp
+                            window.location.href = 'feedback.jsp';
+                        } else {
+                            alert('Error processing payment. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error processing payment. Please try again.');
+                    });
             });
         },
         onError: function(err) {
             alert('Payment Error: ' + err);
         }
     }).render('#paypal-button-container');
-
-    function createInput(name, value) {
-        var input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = name;
-        input.value = value;
-        return input;
-    }
 </script>
 
 </body>

@@ -1,6 +1,5 @@
 package org.example.demomerge.controller;
 
-import com.mysql.cj.Session;
 import jakarta.mail.Message;
 import jakarta.mail.PasswordAuthentication;
 import jakarta.mail.Transport;
@@ -18,15 +17,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Properties;
 
-
 @WebServlet("/PaymentServlet")
 public class PaymentServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     // Database details
     private static final String DB_URL = "jdbc:mysql://localhost:3306/test1";
@@ -38,6 +31,11 @@ public class PaymentServlet extends HttpServlet {
     private static final String EMAIL_PASSWORD = "umxd kevv dinz bbhe";
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Handle GET requests if needed
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Get form data
         String movieTitle = request.getParameter("movieTitle");
@@ -45,44 +43,39 @@ public class PaymentServlet extends HttpServlet {
         String totalPrice = request.getParameter("totalPrice");
         String username = request.getParameter("username");
         String email = request.getParameter("email");
+        String paypalPaymentID = request.getParameter("paypalPaymentID");
 
-        System.out.println(movieTitle);
-        System.out.println(totalPrice);
-        System.out.println(username);
-        System.out.println(email);
+        System.out.println("Processing payment for: " + movieTitle);
+        System.out.println("Total Price: " + totalPrice);
+        System.out.println("Email: " + email);
 
-        sendConfirmationEmail(email, username, movieTitle, selectedSeats);
-
-        // Simulate payment processing
-        boolean paymentSuccessful = processPayment(
-                request.getParameter("cardNumber"),
-                request.getParameter("expiryDate"),
-                request.getParameter("cvv"));
-
-        if (paymentSuccessful) {
+        try {
             // Save booking details in the database
             if (saveBookingDetails(movieTitle, selectedSeats, totalPrice, username, email)) {
                 // Send confirmation email
-//                sendConfirmationEmail(email, username, movieTitle, selectedSeats, totalPrice);
+                boolean emailSent = sendConfirmationEmail(email, username, movieTitle, selectedSeats, totalPrice);
 
-                // Redirect to confirmation page
-                response.sendRedirect("pay_confirm.jsp");
+                if (!emailSent) {
+                    System.out.println("Warning: Failed to send confirmation email to " + email);
+                }
+
+                if (paypalPaymentID != null) {
+                    // For PayPal payments, return success status
+                    response.setStatus(HttpServletResponse.SC_OK);
+                } else {
+                    // For card payments, redirect to confirmation page
+                    response.sendRedirect("feedback.jsp");
+                }
             } else {
-                response.getWriter().println("Error storing booking details. Please try again.");
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error storing booking details");
             }
-        } else {
-            response.getWriter().println("Payment failed. Please check your card details and try again.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Payment processing failed");
         }
     }
 
-    private boolean processPayment(String cardNumber, String expiryDate, String cvv) {
-        // Mock payment success logic
-        return cardNumber != null && expiryDate != null && cvv != null &&
-                cardNumber.length() == 16 && expiryDate.matches("\\d{2}/\\d{2}") && cvv.length() == 3;
-    }
-
     private boolean saveBookingDetails(String movieTitle, String selectedSeats, String totalPrice, String username, String email) {
-
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String sql = "INSERT INTO bookings (movieTitle, selectedSeats, totalPrice, username, email) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -98,33 +91,58 @@ public class PaymentServlet extends HttpServlet {
             return false;
         }
     }
-    private void sendConfirmationEmail(String to, String email, String movieTitle, String selectedSeats) {
 
-        // Email properties
+    private boolean sendConfirmationEmail(String to, String username, String movieTitle, String selectedSeats, String totalPrice) {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
-        jakarta.mail.Session session = jakarta.mail.Session.getInstance(props, new jakarta.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(EMAIL_FROM, EMAIL_PASSWORD);
-            }
-        });
-
         try {
+            jakarta.mail.Session session = jakarta.mail.Session.getInstance(props, new jakarta.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(EMAIL_FROM, EMAIL_PASSWORD);
+                }
+            });
+
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(EMAIL_FROM));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject("Booking Confirmation");
-            message.setText(String.format(
-                    "Hello %s,\n\nThank you for booking!\n\nMovie: %s\nSeats: %s\nTotal Price: $%s\n\nEnjoy your movie!\n\nBest Regards,\nCinema Team",
-                    email, movieTitle, selectedSeats));
+            message.setSubject("Movie Ticket Booking Confirmation");
 
+            // Create HTML content for the email
+            String htmlContent = String.format("""
+                <html>
+                <body style='font-family: Arial, sans-serif; color: #333;'>
+                    <div style='max-width: 600px; margin: 0 auto; padding: 20px;'>
+                        <h1 style='color: #f5c518;'>Booking Confirmation</h1>
+                        <p>Dear %s,</p>
+                        <p>Thank you for booking your movie tickets! Here are your booking details:</p>
+                        <div style='background-color: #f9f9f9; padding: 15px; border-radius: 5px;'>
+                            <p><strong>Movie:</strong> %s</p>
+                            <p><strong>Seats:</strong> %s</p>
+                            <p><strong>Total Amount:</strong> Rs. %s</p>
+                        </div>
+                        <p>Please arrive at least 15 minutes before the show time.</p>
+                        <p>Enjoy your movie!</p>
+                        <p>Best Regards,<br>Movie Hub Team</p>
+                    </div>
+                </body>
+                </html>
+                """,
+                    username != null ? username : "Valued Customer",
+                    movieTitle,
+                    selectedSeats,
+                    totalPrice
+            );
+
+            message.setContent(htmlContent, "text/html; charset=utf-8");
             Transport.send(message);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 }
