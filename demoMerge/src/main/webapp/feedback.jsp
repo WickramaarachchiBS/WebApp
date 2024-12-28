@@ -123,7 +123,7 @@
 <body style="background-color: black">
 <div class="contact-container" style="background-color: #565353">
     <div class="contact-header">
-        <h2 style="color: #ea861a">Contact Us</h2>
+        <h2 style="color: #ea861a">Give us a feedback</h2>
         <p style="color: white">Have a question or want to get in touch? Send us a message!</p>
     </div>
 

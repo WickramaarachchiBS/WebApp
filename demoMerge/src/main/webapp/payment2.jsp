@@ -121,7 +121,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="header">T
+    <div class="header">
         <h2>Payment Details</h2>
     </div>
 
